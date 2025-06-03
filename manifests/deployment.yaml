@@ -1,0 +1,23 @@
+# kubernetes/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cv-example-app-deployment
+  labels:
+    app: cv-example-app
+spec:
+  replicas: 1 # Start with 1 replica for initial testing
+  selector:
+    matchLabels:
+      app: cv-example-app
+  template:
+    metadata:
+      labels:
+        app: cv-example-app
+    spec:
+      containers:
+      - name: cv-example-app-container
+
+        image: user509/labrepository:latest
+        ports:
+        - containerPort: 8080
